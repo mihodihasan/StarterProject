@@ -13,7 +13,8 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $posts=Post::all();
+//        $posts=Post::all();
+        $posts=Post::orderBy('id','desc')->paginate(2);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -37,12 +38,14 @@ class PostController extends Controller {
         //validate
         $this->validate($request,array(
             'title'=>'required|max:255',
+            'slug'=>'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body'=>'required'
         ));
 
         //store to db
         $post=new Post;
         $post->title=$request->title;
+        $post->slug=$request->slug;
         $post->body=$request->body;
         $post->save();
         //show success msg
@@ -84,11 +87,13 @@ class PostController extends Controller {
     public function update(Request $request, $id) {
         $this->validate($request,array(
             'title'=>'required|max:255',
+            'slug'=>'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body'=>'required'
         ));
 
         $post=Post::find($id);
         $post->title=$request->input('title');
+        $post->slug=$request->input('slug');
         $post->body=$request->input('body');
         $post->save();
 

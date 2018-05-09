@@ -12,38 +12,14 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <div class="post">
-                <h3>Post Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa deserunt enim est,
-                    exercitationem in ipsum iure molestiae perferendis, quibusdam quo repellendus unde veniam? Cumque
-                    deleniti dicta facilis maxime vel?</p>
-                <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-            <hr>
-            <div class="post">
-                <h3>Post Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa deserunt enim est,
-                    exercitationem in ipsum iure molestiae perferendis, quibusdam quo repellendus unde veniam? Cumque
-                    deleniti dicta facilis maxime vel?</p>
-                <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-            <hr>
-            <div class="post">
-                <h3>Post Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa deserunt enim est,
-                    exercitationem in ipsum iure molestiae perferendis, quibusdam quo repellendus unde veniam? Cumque
-                    deleniti dicta facilis maxime vel?</p>
-                <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-            <hr>
-            <div class="post">
-                <h3>Post Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur culpa deserunt enim est,
-                    exercitationem in ipsum iure molestiae perferendis, quibusdam quo repellendus unde veniam? Cumque
-                    deleniti dicta facilis maxime vel?</p>
-                <a href="#" class="btn btn-primary">Read More</a>
-            </div>
-            <hr>
+            @foreach($posts as $post)
+                <div class="post">
+                    <h3>{{ $post->title }}</h3>
+                    <p>{{ substr($post->body,0,300) }}{{ strlen($post->body)>300?"...":"" }}</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+                <hr>
+            @endforeach
         </div>
         <div class="col-md-3 col-md-offset-1">
             <h2>Sidebar</h2>

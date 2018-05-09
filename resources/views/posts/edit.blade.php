@@ -6,6 +6,10 @@
         <div class="col-md-8">
             {{Form::label('title','Post Title: ')}}
             {{Form::text('title',null,["class"=>'form-control input-lg','required'=>'', 'maxlength'=>'255'])}}
+
+            {{Form::label('slug','Slug Url:',['class'=>'form-spacing-top'])}}
+            {{Form::text('slug',null,["class"=>'form-control','required'=>'','minlength'=>'5', 'maxlength'=>'255'])}}
+
             {{Form::label('body','Post Description: ',['class'=>'form-spacing-top'])}}
             {{Form::textarea('body',null,["class"=>'form-control','required'=>''])}}
             {{--<p class="lead">{{$post->body}}</p>--}}
@@ -13,11 +17,11 @@
         <div class="col-md-4">
             <div class="well">
                 <dl class="dl-horizontal">
-                    <dt>Created At: </dt>
+                    <dt>Created At:</dt>
                     <dd>{{date('M d, Y h:ia',strtotime($post->created_at))}}</dd>
                 </dl>
                 <dl class="dl-horizontal">
-                    <dt>Last Modified At: </dt>
+                    <dt>Last Modified At:</dt>
                     <dd>{{date('M d, Y h:ia',strtotime($post->updated_at))}}</dd>
                 </dl>
                 <hr>

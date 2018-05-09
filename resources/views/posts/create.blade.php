@@ -10,6 +10,9 @@
             {{ Form::label('title','Title: ') }}
             {{ Form::text('title',null,array('class'=>'form-control','required'=>'', 'maxlength'=>'255')) }}
 
+            {{ Form::label('slug','Set Post Url: ') }}
+            {{ Form::text('slug',null,array('class'=>'form-control','required'=>'', 'minlength'=>'5', 'maxlength'=>'255')) }}
+
             {{ Form::label('body','Body Of Post: ') }}
             {{ Form::textarea('body',null,array('class'=>'form-control','required'=>'')) }}
 
